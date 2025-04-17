@@ -1,23 +1,23 @@
-# 🎯 YouTube Comments Sentiment Analysis
+# YouTube Comments Sentiment Analysis
 
 This project performs sentiment analysis on YouTube video comments using a combination of VADER sentiment analysis and emoji-based sentiment scoring. It integrates emoji sentiment to better capture emotional context, enhancing the overall analysis of user opinions.
 
-## 🌐 Live Demo
+## Live Demo
 Try it out here: [👉 Deployed on Hugging Face](https://your-huggingface-app-link)  
 (Replace with your actual Hugging Face URL)
 
-## 🧠 Key Features
+## Key Features
 - Analyze the sentiment of comments from **any YouTube video**.
 - Combines **text and emoji sentiment** using an equal-weighted approach.
 - Provides insights with **rich visualizations** and **top comments**.
 - Uses **Gradio-based interface** for easy interaction.
 
-## 📥 How to Use
+## How to Use
 - Enter a **YouTube video URL** in the Gradio interface.
 - Select the **number of comments** you want to analyze.
 - Get real-time sentiment analysis, top comments, and visual breakdowns.
 
-## 📁 Dataset
+## Dataset
 
 - Comments and video metadata are fetched using the **YouTube Data API v3**.
 - The API returns a `.csv` file containing the following columns:
@@ -34,7 +34,7 @@ Try it out here: [👉 Deployed on Hugging Face](https://your-huggingface-app-li
   - `emoji_sentiment`: Sentiment score based on emojis.
   - `final_sentiment`: Combined sentiment label (based on text + emoji).
 
-## ⚙️ Project Workflow
+## Project Workflow
 
 1. **Data Preprocessing**
    - Removed extra spaces, URLs, mentions, and irrelevant tokens that do not contribute to sentiment analysis.
@@ -49,7 +49,7 @@ Try it out here: [👉 Deployed on Hugging Face](https://your-huggingface-app-li
    - Created word clouds for each sentiment category.
    - Displayed most liked comments, average likes per sentiment, and more.
 
-## 📊 Visualizations & Analysis
+## Visualizations & Analysis
 - Sentiment distribution (Pie Chart).
 - Most liked comment overall & for each sentiment (Bar Plot).
 - Average likes for each sentiment (Bar Plot).
@@ -57,7 +57,7 @@ Try it out here: [👉 Deployed on Hugging Face](https://your-huggingface-app-li
 - Comment length distribution by sentiment (Violin Plot).
 - ...and more!
 
-## 🛠️ Tools & Libraries
+## Tools & Libraries
 - Pandas, NumPy
 - NLTK, VADER
 - Emoji
