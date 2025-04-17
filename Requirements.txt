@@ -1,0 +1,10 @@
+pandas
+nltk
+emoji
+wordcloud
+matplotlib
+gradio
+vaderSentiment
+tqdm
+google-api-python-client
+seaborn
