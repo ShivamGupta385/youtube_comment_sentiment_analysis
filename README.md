@@ -49,7 +49,7 @@ Try it out here: (https://huggingface.co/spaces/Shivam835/yt_comments_sentiment_
 - Comment length distribution by sentiment (Violin Plot).
 - ...and more!
 
-## Tools & Libraries
+## Tools & Libraries used
 - Pandas
 - NumPy
 - google-api-python-client
@@ -59,6 +59,14 @@ Try it out here: (https://huggingface.co/spaces/Shivam835/yt_comments_sentiment_
 - Matplotlib, Seaborn, WordCloud
 - nltk
 - Gradio
+- gradio	Building a user-friendly web interface for the app.
+- re (regex)
+- string	
+- time	
+- warnings	
+- googleapiclient.discovery.build	
+- googleapiclient.errors.HttpError
+- datetime	
 
 ## Future Improvements
 - Integrate deep learning models like **BERT** for more accurate sentiment prediction.
