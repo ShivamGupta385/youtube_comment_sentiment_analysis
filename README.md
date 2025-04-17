@@ -18,7 +18,6 @@ Try it out here: [👉 Deployed on Hugging Face](https://your-huggingface-app-li
 - Get real-time sentiment analysis, top comments, and visual breakdowns.
 
 ## Dataset
-
 - Comments and video metadata are fetched using the **YouTube Data API v3**.
 - The API returns a `.csv` file containing the following columns:
   - `author`: Name of the commenter.
@@ -35,7 +34,6 @@ Try it out here: [👉 Deployed on Hugging Face](https://your-huggingface-app-li
   - `final_sentiment`: Combined sentiment label (based on text + emoji).
 
 ## Project Workflow
-
 1. **Data Preprocessing**
    - Removed extra spaces, URLs, mentions, and irrelevant tokens that do not contribute to sentiment analysis.
 
@@ -44,12 +42,7 @@ Try it out here: [👉 Deployed on Hugging Face](https://your-huggingface-app-li
    - Applied an **emoji sentiment lexicon** to score emojis in comments.
    - Used an **equal-weighted approach** for text and emoji sentiment to determine the final sentiment.
 
-3. **Visualization & Analysis**
-   - Plotted sentiment distribution.
-   - Created word clouds for each sentiment category.
-   - Displayed most liked comments, average likes per sentiment, and more.
-
-## Visualizations & Analysis
+3. **Visualizations & Analysis**
 - Sentiment distribution (Pie Chart).
 - Most liked comment overall & for each sentiment (Bar Plot).
 - Average likes for each sentiment (Bar Plot).
@@ -64,7 +57,7 @@ Try it out here: [👉 Deployed on Hugging Face](https://your-huggingface-app-li
 - Matplotlib, Seaborn, WordCloud
 - Gradio
 
-## 🚀 Future Improvements
+## Future Improvements
 - Integrate deep learning models like **BERT** for more accurate sentiment prediction.
 - Expand and refine the **emoji sentiment lexicon**.
 - Support for **multiple languages**.
