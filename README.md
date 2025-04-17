@@ -3,7 +3,7 @@
 This project performs sentiment analysis on YouTube video comments using a combination of VADER sentiment analysis and emoji-based sentiment scoring. It integrates emoji sentiment to better capture emotional context, enhancing the overall analysis of user opinions.
 
 ## Live Demo
-Try it out here: [👉 Deployed on Hugging Face](https://huggingface.co/spaces/Shivam835/yt_comments_sentiment_analysis)  
+Try it out here: (https://huggingface.co/spaces/Shivam835/yt_comments_sentiment_analysis)  
 
 ## Key Features
 - Analyze the sentiment of comments from **any YouTube video**.
