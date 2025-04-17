@@ -50,10 +50,14 @@ Try it out here: (https://huggingface.co/spaces/Shivam835/yt_comments_sentiment_
 - ...and more!
 
 ## Tools & Libraries
-- Pandas, NumPy
-- NLTK, VADER
+- Pandas
+- NumPy
+- google-api-python-client
+- tqdm
+- VaderSentiment
 - Emoji
 - Matplotlib, Seaborn, WordCloud
+- nltk
 - Gradio
 
 ## Future Improvements
