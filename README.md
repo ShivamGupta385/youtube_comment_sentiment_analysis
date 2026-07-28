@@ -5,160 +5,161 @@
 ![HuggingFace](https://img.shields.io/badge/Deployment-HuggingFace%20Spaces-yellow?style=for-the-badge&logo=huggingface)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-EchoSense is an automated sentiment analysis platform that evaluates viewer feedback from YouTube video comment streams in real time. By combining **VADER text analysis** with an **emoji sentiment lexicon**, EchoSense accurately captures both textual and visual emotional context in unstructured user-generated content.
+EchoSense is an automated sentiment analysis platform that evaluates viewer feedback from YouTube video comment streams in real time. By fusing **VADER text analysis** with an **emoji sentiment lexicon**, EchoSense accurately captures multi-modal emotional context in unstructured, user-generated content.
 
-**Live Demo:**  
-https://huggingface.co/spaces/Shivam835/EchoSense
-
----
-
-# Key Features
-
-- **Real-Time Data Ingestion:** Fetches YouTube comments and video metadata using the YouTube Data API v3.
-- **Hybrid Sentiment Scoring:** Combines VADER sentiment analysis with emoji sentiment mapping using an equal-weighted scoring approach.
-- **Interactive Visualizations:** Generates sentiment pie charts, engagement bar plots, word clouds, and comment-length violin plots.
-- **CSV Export:** Allows users to download processed comments along with sentiment scores and classifications.
+**Live Demo:** [Experience EchoSense on Hugging Face Spaces](https://huggingface.co/spaces/Shivam835/EchoSense)
 
 ---
 
-# 🛠️ System Architecture & Workflow
+## Key Features
+
+- **Real-Time Data Ingestion:** Fetches comment streams and video metadata from any YouTube video using the YouTube Data API v3.
+- **Hybrid Sentiment Scoring Engine:** Combines NLP dictionary lookup (VADER) with visual emoji sentiment mapping using an equal-weighted approach.
+- **Interactive Visualizations:** Generates dynamic pie charts, sentiment-to-engagement bar plots, word clouds, and comment length violin distribution plots.
+- **Structured Data Export:** Provides an in-app downloadable CSV report with cleaned text, raw metrics, and final composite sentiment classifications.
+
+---
+
+## System Architecture & Workflow
 
 ```text
-                   +----------------------+
-                   |  YouTube Data API v3 |
-                   +----------+-----------+
-                              |
-                              v
-                  +-----------------------+
-                  |   Data Ingestion      |
-                  +-----------+-----------+
-                              |
-                              v
-               +----------------------------+
-               | Text Preprocessing         |
-               | (Regex + NLTK Cleaning)    |
-               +-----------+----------------+
-                             |
-                             v
-          +--------------------------------------+
-          | Hybrid Sentiment Analysis            |
-          |  • VADER Text Sentiment              |
-          |  • Emoji Sentiment Lexicon           |
-          +-----------+--------------------------+
-                              |
-                              v
-              +-------------------------------+
-              | Composite Sentiment Scoring   |
-              +-----------+-------------------+
-                              |
-                    +---------+---------+
-                    |                   |
-                    v                   v
-          +------------------+   +-------------------+
-          | Visualizations   |   | CSV Export        |
-          +------------------+   +-------------------+
-                      \                 /
-                       \               /
-                        +-------------+
-                        | Gradio UI   |
-                        +-------------+
+[ YouTube API v3 ] ──► [ Data Ingestion ] ──► [ Text Preprocessing (Regex/NLTK) ]
+                                                            │
+                                                            ▼
+[ Gradio UI / CSV ] ◄── [ Visualizations ] ◄── [ Hybrid Scoring (VADER + Emoji) ]
 ```
 
 ### Workflow
 
-1. **Data Ingestion**
-   - Retrieves `author`, `comment`, `date`, and `likes` metadata using the YouTube Data API v3.
+1. **Ingestion & Data Extraction**
+   - Fetches `author`, `comment`, `date`, and `likes` metadata into structured Pandas DataFrames.
 
 2. **Text Preprocessing**
-   - Removes URLs, mentions, special characters, and unnecessary whitespace using Regex and NLTK.
+   - Cleans raw text by stripping URLs, user mentions, extra whitespaces, and noise tokens that do not contribute to sentiment analysis.
 
-3. **Hybrid Sentiment Analysis**
-   - **Text Sentiment:** Computed using **VADER**.
-   - **Emoji Sentiment:** Computed using an emoji sentiment lexicon.
-   - **Final Classification:** Equal-weighted combination of both scores to classify comments as **Positive**, **Negative**, or **Neutral**.
+3. **Multi-Modal Scoring**
+   - **Text Sentiment:** Evaluated using **VaderSentiment**.
+   - **Emoji Sentiment:** Scored using a dedicated emoji sentiment lexicon.
+   - **Composite Label:** Computes an equal-weighted score combining text and emoji analysis to classify outputs as **Positive**, **Negative**, or **Neutral**.
 
-4. **Visualization & Export**
-   - Generates analytical plots and exports processed data as a downloadable CSV report.
+4. **Analytics & Output**
+   - Renders statistical plots and outputs an exportable CSV report containing engineered features.
 
 ---
 
-# Data Schema
+## Data Schema
+
+The ingested data is transformed and exported with the following schema:
 
 | Column | Description |
-|---------|-------------|
-| `author` | Display name of the commenter |
-| `comment` | Original YouTube comment |
-| `date` | Comment publication timestamp |
-| `likes` | Number of likes received |
-| `cleaned_comment` | Preprocessed comment text |
-| `text_sentiment` | VADER compound sentiment score |
-| `emoji_sentiment` | Emoji lexicon sentiment score |
-| `final_sentiment` | Final classification (Positive, Negative, Neutral) |
+|--------|-------------|
+| **author** | Display name of the commenter |
+| **comment** | Original, unedited YouTube comment |
+| **date** | Timestamp of comment publication |
+| **likes** | Number of likes received by the comment |
+| **cleaned_comment** | Preprocessed text stripped of URLs, mentions, and noise |
+| **text_sentiment** | Compound sentiment score generated by VADER |
+| **emoji_sentiment** | Lexicon-based sentiment score from embedded emojis |
+| **final_sentiment** | Composite classification (**Positive**, **Negative**, **Neutral**) |
 
 ---
 
-# Local Installation
+## Local Installation & Setup
 
-## 1. Prerequisites
+To run EchoSense locally on your machine, follow these steps. The core analysis is executed through a Jupyter Notebook.
 
-Obtain a valid **YouTube Data API v3 Key** from the Google Cloud Console.
+### 1. Prerequisites
 
-## 2. Clone the Repository
+Ensure you have:
+
+- A valid **YouTube Data API v3 Key** from the Google Cloud Console.
+- Python **3.10+**
+- Jupyter Notebook installed.
+
+### 2. Clone the Repository
 
 ```bash
 git clone https://github.com/Shivam835/EchoSense.git
 cd EchoSense
 ```
 
-## 3. Install Dependencies
+### 3. Install Dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install -r Requirements.txt
 ```
 
-## 4. Run the Application
+### 4. Configure the Notebook
+
+Open **`Youtube_Comments_Sentiment_Analysis.ipynb`** and update the following variables before running the notebook:
+
+- **API Key:** Replace the placeholder with your YouTube Data API v3 Key.
+- **Video ID:** Copy the video ID from the target YouTube URL.
+
+Example:
+
+```text
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+Video ID:
+
+```text
+dQw4w9WgXcQ
+```
+
+### 5. Run the Analysis
+
+Launch Jupyter Notebook and execute all cells.
 
 ```bash
-python app.py
+jupyter notebook Youtube_Comments_Sentiment_Analysis.ipynb
 ```
 
 ---
 
-# Tech Stack
+## Tech Stack & Tools
 
-### Programming Language
+### Core Language
+
 - Python
 
-### Data Processing
+### Data Processing & Analytics
+
 - Pandas
 - NumPy
 
 ### API Integration
+
 - google-api-python-client
 
 ### Natural Language Processing
+
 - NLTK
 - VaderSentiment
 - Emoji
 - Regex
 
 ### Data Visualization
+
 - Matplotlib
 - Seaborn
 - WordCloud
 
 ### Interface & Deployment
+
+- Jupyter Notebook
 - Gradio
 - Hugging Face Spaces
 
 ---
 
-# Future Roadmap
+## Future Roadmap
 
-- [ ] Integrate transformer-based models (e.g., BERT) for improved contextual sentiment analysis.
-- [ ] Expand the emoji sentiment lexicon to support modern slang and evolving emoji usage.
-- [ ] Add multilingual sentiment analysis.
-- [ ] Implement WebSocket-based real-time YouTube Live comment tracking.
+- [ ] Integrate transformer-based deep learning models (e.g., fine-tuned BERT) for complex contextual sentiment analysis.
+- [ ] Expand and refine the emoji sentiment lexicon to support modern slang and contextual emoji usage.
+- [ ] Implement multilingual sentiment analysis and translation.
+- [ ] Add WebSocket support for real-time YouTube Live comment tracking.
 
 ---
 
