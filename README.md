@@ -7,12 +7,12 @@
 
 EchoSense is an automated sentiment analysis platform that evaluates viewer feedback from YouTube video comment streams in real time. By combining **VADER text analysis** with an **emoji sentiment lexicon**, EchoSense accurately captures both textual and visual emotional context in unstructured user-generated content.
 
-🚀 **Live Demo:**  
+**Live Demo:**  
 https://huggingface.co/spaces/Shivam835/EchoSense
 
 ---
 
-# ✨ Key Features
+# Key Features
 
 - **Real-Time Data Ingestion:** Fetches YouTube comments and video metadata using the YouTube Data API v3.
 - **Hybrid Sentiment Scoring:** Combines VADER sentiment analysis with emoji sentiment mapping using an equal-weighted scoring approach.
