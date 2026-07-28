@@ -162,7 +162,7 @@ python app.py
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Shivam Gupta**
 
